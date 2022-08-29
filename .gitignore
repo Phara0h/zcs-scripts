@@ -1,6 +1,10 @@
 
 .DS_Store
 dumps/*
-output
+output/streets/*
+output/cities/*
+output/location/*
+output/states/*
+output/zips/*
 old
 node_modules
