@@ -1,0 +1,19 @@
+{
+  "name": "nad-streets-units-mgrs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "transform": "node transform-csv.js",
+    "write": "node write-output.js",
+    "write-letters": "node write-output-letters.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "leveldown": "^6.1.1",
+    "levelup": "^5.1.1",
+    "pg": "^8.7.3",
+    "pg-query-stream": "^4.2.3"
+  }
+}
