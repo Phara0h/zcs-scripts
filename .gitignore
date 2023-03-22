@@ -8,3 +8,4 @@ output/states/*
 output/zips/*
 old
 node_modules
+package-lock.json

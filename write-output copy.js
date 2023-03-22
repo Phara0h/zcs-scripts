@@ -159,18 +159,17 @@ async function writeOut() {
             // );
 
             // Write unique street names to file
-            streetNamesStream.write(`${index === 0 ? "" : ",\n"}"${streetName}"`);
+            // streetNamesStream.write(`${index === 0 ? "" : ",\n"}"${streetName}"`);
 
-            // write street indexes to file
-            streetIndexStream.write(
-              `${index === 0 ? "" : ",\n"}"${streetName}":${Number.parseInt(index)}`
-            );
+            // // write street indexes to file
+            // streetIndexStream.write(
+            //   `${index === 0 ? "" : ",\n"}"${streetName}":${Number.parseInt(index)}`
+            // );
 
             index++;
             streetName = street.name;
-            await street_data_db.put(streetInc++, JSON.stringify(tmpStreetData));
+            // await street_data_db.put(streetInc++, JSON.stringify(tmpStreetData));
             tmpStreetData = {};
-            stats.uniqueNames = index + 1;
           }
 
           street.zip_index = Number.parseInt(street.zip_index);
@@ -213,6 +212,7 @@ async function writeOut() {
             ] = {}
           }
           var dbindex = `${index}:${street.zip_index}:${street.number}`;
+
           if (!mgrsData[mgrsParts[0]][mgrsParts[1]][mgrsParts[2] + mgrsParts[5]][mgrsParts[3] + mgrsParts[6]][mgrsParts[4] + mgrsParts[7]]) {
             mgrsData[mgrsParts[0]][mgrsParts[1]][mgrsParts[2] + mgrsParts[5]][mgrsParts[3] + mgrsParts[6]][mgrsParts[4] + mgrsParts[7]] = [dbindex]
           }
@@ -308,29 +308,30 @@ async function writeOut() {
     //   await street_data_db.put(i, streetData[i]);
     // }
 
-    console.log("Write unique street names to file");
-    // Write unique street names to file
-    streetNamesStream.write(`${index === 0 ? "" : ",\n"}"${streetName}"`);
+//     console.log("Write unique street names to file");
+//     // Write unique street names to file
+//     streetNamesStream.write(`${index === 0 ? "" : ",\n"}"${streetName}"`);
 
-    streetNamesStream.write(`\n]\n`);
-    streetNamesStream.write(`
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.street_names = street_names;
-`);
-    console.log("Write street indexes to file");
-    // write street indexes to file
-    streetIndexStream.write(
-      `${index === 0 ? "" : ",\n"}"${streetName}":${Number.parseInt(index)}`
-    );
-    streetIndexStream.write(`\n}\n`);
-    streetIndexStream.write(`
-    Object.defineProperty(exports, "__esModule", { value: true });
-    exports.street_index = street_index;
-    `);
+//     streetNamesStream.write(`\n]\n`);
+//     streetNamesStream.write(`
+// Object.defineProperty(exports, "__esModule", { value: true });
+// exports.street_names = street_names;
+// `);
+//     console.log("Write street indexes to file");
+//     // write street indexes to file
+//     streetIndexStream.write(
+//       `${index === 0 ? "" : ",\n"}"${streetName}":${Number.parseInt(index)}`
+//     );
+//     streetIndexStream.write(`\n}\n`);
+//     streetIndexStream.write(`
+//     Object.defineProperty(exports, "__esModule", { value: true });
+//     exports.street_index = street_index;
+//     `);
 
 
     console.log("\n\ndone.");
     db.close();
+    process.exit();
   });
 }
 
